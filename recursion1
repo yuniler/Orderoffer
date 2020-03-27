@@ -1,0 +1,64 @@
+package orderOffer;
+
+public class Dp04fbnqSeries {
+    /**
+     斐波那契数列，现在要求输入一个整数n,请你输出斐波那契数列的第n项（从0开始，第0项为0
+
+
+     1.1.2.3.5.8.13.21.34.
+     F(1)=1, F(2)=1, F(3)=2, F(n)=F(n-1)+F(n-2) (n >=3 )
+     */
+
+
+
+
+    /**
+     * Dynamic programming
+     * @param n
+     * 解法：时间换空间
+     * 核心思想：计算出每一项
+     */
+    public int dp(int n){
+        int[] array = new int[n+1];//放出一块内存来装
+        for (int i = 1; i <= n ; i++) {//array是一种数组类型
+            if (n == 1 || n == 2){
+                array[i]= 1;
+            }else{
+                array[i] = array[i-1] + array[i-2];
+            }
+
+        }
+        return array[n];
+    }
+
+    /**
+     * 递归来解决
+        递归：自己调用自己
+        重要的是找：出口
+     造成重复。时间复杂度：耗时长
+     方法：空间化时间
+     */
+
+
+
+//3进来，，3为第3项，而不是数值3，，3对应数组为2        等价于     递归 出口就是有计算结果
+    public int fibonacci(int n) {
+        int ret = 0;
+        //安全校验
+        if (n <= 0){
+            return 0;
+        }
+        if (n == 1 || n == 2){
+            return 1;
+        }
+
+
+        //第4项  --> 3  fibonacci(3) + fibonacci(2)
+                          //  2     +     1
+        //第n项 --> 5 fibonacci(n - 1) + fibonacci(n - 2)
+        //                        +
+        return fibonacci(n-1) + fibonacci(n-2);//调用斐波那契方法，如果不等于1.2，直接输出前两项之和
+    }
+
+
+}
